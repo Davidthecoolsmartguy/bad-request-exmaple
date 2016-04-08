@@ -1,0 +1,33 @@
+<html>
+
+{% macro render_field(field) %}
+<div class="form-group">
+    {% if field.name != "submit" %}
+    {{ field.label }}
+    {{ field(**kwargs)|safe }}   
+    {% else %}
+    {{ field(class="btn btn-primary") }}
+    {% endif %}
+</div>
+{% endmacro %}
+
+                               <!-- flash python messages -->
+                    <div class="flashes">
+                        {% for message in get_flashed_messages() %}
+                        {{ message }}
+                        {% endfor %}
+                    </div>
+                    <!--  end flash python  messages -->
+
+
+                <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    {{ render_field(form.hours_worked,  class="form-control", autocomplete="off") }}
+                    {{ render_field(form.hourly_rate,   class="form-control", autocomplete="off") }}
+                    {{ render_field(form.button1,        class="form-control", autocomplete="off") }}
+                    {{ render_field(form.button2,        class="form-control", autocomplete="off") }}
+                    
+                    
+                </form>
+                
+</html>
