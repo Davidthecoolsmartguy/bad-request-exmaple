@@ -1,2 +1,6 @@
 # bad-request-exmaple
-exmaples
+A lesson for begginers  on useing the debuger
+
+
+simple solution
+if "x" in request.form
